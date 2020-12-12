@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useMutation, useQuery } from '@apollo/client'
-
 import { Form, Input, Button, Select } from 'antd'
-
 const { Option } = Select;
-
 import { v4 as uuidv4 } from 'uuid'
-
 import { ADD_BOAT, GET_PEOPLEBOATS, GET_PEOPLE } from '../../queries'
 
 const AddBoat = () => {

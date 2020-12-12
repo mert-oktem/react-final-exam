@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useMutation } from '@apollo/client'
-import { Form, Input, Button } from 'antd'
+import { Form, Input, Button, Select } from 'antd'
+const { Option } = Select;
 import { UPDATE_BOAT } from '../../queries'
 
 const UpdateBoat = props => {
@@ -149,10 +150,6 @@ const UpdateBoat = props => {
                     <Button
                         type='primary'
                         htmlType='submit'
-                        disabled={
-                            !form.isFieldsTouched(true) ||
-                            form.getFieldsError().filter(({ errors }) => errors.length).length
-                        }
                     >
                         Update Boat
                     </Button>
