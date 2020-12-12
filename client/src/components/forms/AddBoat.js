@@ -12,8 +12,8 @@ import { ADD_BOAT, GET_PEOPLEBOATS, GET_PEOPLE } from '../../queries'
 const AddBoat = () => {
     const [id] = useState(uuidv4())
     const [addBoat] = useMutation(ADD_BOAT);
-    const { peopleData } = useQuery(GET_PEOPLE)
-    console.log(peopleData)
+    let { data } = useQuery(GET_PEOPLE)
+    console.log(data)
     const [form] = Form.useForm()
     const [, forceUpdate] = useState()
 
@@ -28,7 +28,6 @@ const AddBoat = () => {
 
     const onFinish = values => {
         const { year, make, model, price, personId } = values
-        console.log(data)
         addBoat({
             variables: {
                 id,
@@ -55,12 +54,13 @@ const AddBoat = () => {
                     query: GET_PEOPLEBOATS,
                     variables: { personId: personId }
                 })
+                console.log(data)
                 proxy.writeQuery({
                     query: GET_PEOPLEBOATS,
                     variables: { personId: personId },
                     data: {
                         ...data,
-                        boats: [...data.boats, addBoat]
+                        boats: [...data.getBoats, addBoat]
                     }
                 })
             }
@@ -107,7 +107,7 @@ const AddBoat = () => {
                 {/* <Input placeholder='i.e. personId' /> */}
                 <Select defaultValue="Select Name" style={{ width: 120 }} onChange={handleChange}>
 
-                    {peopleData.people.map(({ id, firstName, lastName }) => (
+                    {data.people.map(({ id, firstName, lastName }) => (
                         <Option key={id} value={id}>{firstName}</Option>
                     ))}
                 </Select>
