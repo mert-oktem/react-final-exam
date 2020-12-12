@@ -12,6 +12,8 @@ const UpdateBoat = props => {
     const [personId, setPersonId] = useState(props.personId)
     const [updateBoat] = useMutation(UPDATE_BOAT)
 
+    console.log(year,"A")
+
     const [form] = Form.useForm()
     const [, forceUpdate] = useState()
 
@@ -97,6 +99,7 @@ const UpdateBoat = props => {
             >
                 <Input
                     placeholder='i.e. 2018'
+                    value={year}
                     onChange={e => updateStateVariable('year', e.target.value)}
                 />
             </Form.Item>

@@ -20,7 +20,6 @@ const Boat = props => {
     const [personId, setPersonId] = useState(props.personId)
     const [editMode, setEditMode] = useState(false)
     const styles = getStyles()
-
     const boatInfo = () => {
         return `Year is: ${props.year}, Make is:  ${props.make}, Model is: ${props.model}, Price is: ${props.price} and Person ID is: ${props.personId}`
     }
@@ -56,6 +55,7 @@ const Boat = props => {
                     id={id}
                     onButtonClick={handleButtonClick}
                     updateStateVariable={updateStateVariable}
+                    year={year} make={make} model={model} price={price} personId={personId}
                 />
             ) : (
                     <Card
